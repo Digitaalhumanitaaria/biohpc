@@ -1,1 +1,1 @@
-# biohpc
+# Scripts to install and setup R on [Rocket](http://www.hpc.ut.ee/rocket_cluster) , [Vedur](http://www.hpc.ut.ee/vedur_cluster) and [Juur](http://grid.eenet.ee/main/english/kobararvuti-juhend/) cluster
