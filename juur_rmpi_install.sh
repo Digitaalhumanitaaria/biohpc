@@ -353,5 +353,31 @@ $HOME/$PARALLELR/$RDIR/R300install/bin/R CMD INSTALL \
 #                   --with-mpi-type=OPENMPI" \
 #-l $HOME/$RDIR/R300install/lib64/R/library pbdDEMO_0.2-0.tar.gz 
  
- 
+# Get chron which is needed for data.table https://cran.r-project.org/web/packages/chron/index.html
+wget https://cran.r-project.org/src/contrib/chron_2.3-47.tar.gz
+$HOME/$PARALLELR/$RDIR/R300install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$PARALLELR/$RDIR/R300install/lib64/R/library chron_2.3-47.tar.gz
+
+
+# Get data.table https://cran.r-project.org/web/packages/data.table/index.html
+wget https://cran.r-project.org/src/contrib/data.table_1.9.6.tar.gz
+$HOME/$PARALLELR/$RDIR/R300install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$PARALLELR/$RDIR/R300install/lib64/R/library data.table_1.9.6.tar.gz
+
+# Get PM cluster https://cran.r-project.org/web/packages/pmclust/index.html
+wget https://cran.r-project.org/src/contrib/pmclust_0.1-7.tar.gz
+$HOME/$PARALLELR/$RDIR/R300install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$PARALLELR/$RDIR/R300install/lib64/R/library pmclust_0.1-7.tar.gz 
 
