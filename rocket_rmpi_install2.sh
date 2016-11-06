@@ -365,3 +365,12 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R300install/lib64/R/library pmclust_0.1-8.tar.gz
 
+# Get pdbDEMO https://cran.r-project.org/web//packages/pbdDEMO/index.html 
+#wget https://github.com/wrathematics/pbdDEMO/archive/v0.2-0.tar.gz
+wget https://cran.r-project.org/src/contrib/pbdDEMO_0.3-1.tar.gz
+$HOME/$RDIR/R300install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R300install/lib64/R/library pbdDEMO_0.3-1.tar.gz 
