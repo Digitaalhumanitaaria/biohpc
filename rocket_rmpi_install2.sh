@@ -79,14 +79,14 @@ export MPIINCLUDE=$HOME/$MPIDIR/install/include
 export MPILIB=$HOME/$MPIDIR/install/lib
 
 # Get RMPI http://www.stats.uwo.ca/faculty/yu/Rmpi/ 
-wget https://cran.r-project.org/src/contrib/Rmpi_0.6-5.tar.gz
+wget https://cran.r-project.org/src/contrib/Rmpi_0.6-6.tar.gz
 
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-Rmpi-include=$MPIINCLUDE \
                    --with-Rmpi-libpath=$MPILIB \
                    --with-Rmpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library  Rmpi_0.6-5.tar.gz 
+ -l $HOME/$RDIR/R300install/lib64/R/library  Rmpi_0.6-6.tar.gz 
 
 # Get Rmethods https://cran.r-project.org/web/packages/R.methodsS3/index.html
 wget https://cran.r-project.org/src/contrib/R.methodsS3_1.7.1.tar.gz
@@ -98,13 +98,13 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  -l $HOME/$RDIR/R300install/lib64/R/library R.methodsS3_1.7.1.tar.gz
 
 # Get R.oo https://cran.r-project.org/web/packages/R.oo/index.html
-wget https://cran.r-project.org/src/contrib/R.oo_1.20.0.tar.gz
+wget https://cran.r-project.org/src/contrib/R.oo_1.21.0.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I/$MPIINCLUDE LDFLAGS=' -L/$MPILIB'" \
  --configure-args="--with-Rmpi-include=$MPIINCLUDE \
                    --with-Rmpi-libpath=$MPILIB \
                    --with-Rmpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library R.oo_1.20.0.tar.gz
+ -l $HOME/$RDIR/R300install/lib64/R/library R.oo_1.21.0.tar.gz
 
 # Get doMC https://cran.r-project.org/web/packages/doMC/index.html
 wget https://cran.r-project.org/src/contrib/doMC_1.3.4.tar.gz
@@ -116,23 +116,23 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  -l $HOME/$RDIR/R300install/lib64/R/library doMC_1.3.4.tar.gz
 
 # Get utils https://cran.r-project.org/web/packages/R.utils/index.html
-wget https://cran.r-project.org/src/contrib/R.utils_2.3.0.tar.gz
+wget https://cran.r-project.org/src/contrib/R.utils_2.4.0.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$HOME/$MPIDIR/install//lib'" \
  --configure-args="--with-Rmpi-include=$MPIINCLUDE \
                    --with-Rmpi-libpath=$MPILIB \
                    --with-Rmpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library R.utils_2.3.0.tar.gz
+ -l $HOME/$RDIR/R300install/lib64/R/library R.utils_2.4.0.tar.gz
 
 
 # Get SNOW https://cran.r-project.org/web/packages/snow/index.html
-wget https://cran.r-project.org/src/contrib/snow_0.4-1.tar.gz
+wget https://cran.r-project.org/src/contrib/snow_0.4-2.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$HOME/$MPIDIR/install//lib'" \
  --configure-args="--with-Rmpi-include=$MPIINCLUDE \
                    --with-Rmpi-libpath=$MPILIB \
                    --with-Rmpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library snow_0.4-1.tar.gz 
+ -l $HOME/$RDIR/R300install/lib64/R/library snow_0.4-2.tar.gz 
 
 
 # Get iterators https://cran.r-project.org/web/packages/iterators/index.html
@@ -146,13 +146,13 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
 
 
 # Get codetools https://cran.r-project.org/web/packages/codetools/index.html
-wget https://cran.r-project.org/src/contrib/codetools_0.2-14.tar.gz
+wget https://cran.r-project.org/src/contrib/codetools_0.2-15.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-Rmpi-include=$MPIINCLUDE \
                    --with-Rmpi-libpath=$MPILIB \
                    --with-Rmpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library codetools_0.2-14.tar.gz
+ -l $HOME/$RDIR/R300install/lib64/R/library codetools_0.2-15.tar.gz
 
 
 # Get foreach https://cran.r-project.org/web/packages/foreach/index.html 
@@ -236,34 +236,34 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
     
     
 #get https://cran.r-project.org/web/packages/pbdSLAP/index.html
- wget https://cran.r-project.org/src/contrib/pbdSLAP_0.2-1.tar.gz
+ wget https://cran.r-project.org/src/contrib/pbdSLAP_0.2-2.tar.gz
  $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library pbdSLAP_0.2-1.tar.gz
+ -l $HOME/$RDIR/R300install/lib64/R/library pbdSLAP_0.2-2.tar.gz
   
   
  
 # get  https://cran.r-project.org/web/packages/pbdBASE/index.html
-wget https://cran.r-project.org/src/contrib/pbdBASE_0.4-3.tar.gz
+wget https://cran.r-project.org/src/contrib/pbdBASE_0.4-5.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library pbdBASE_0.4-3.tar.gz
+ -l $HOME/$RDIR/R300install/lib64/R/library pbdBASE_0.4-5.tar.gz
  
  
 # Get pdbMAT https://cran.r-project.org/web/packages/pbdMAT/index.html
-wget https://cran.r-project.org/src/contrib/pbdDMAT_0.4-0.tar.gz
+wget https://cran.r-project.org/src/contrib/pbdDMAT_0.4-2.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
--l $HOME/$RDIR/R300install/lib64/R/library pbdDMAT_0.4-0.tar.gz 
+-l $HOME/$RDIR/R300install/lib64/R/library pbdDMAT_0.4-2.tar.gz 
 
 # Get and install the HDF5 Parallel IO library
 wget www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.17.tar.gz
