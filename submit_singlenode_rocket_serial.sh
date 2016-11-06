@@ -5,7 +5,7 @@
 #SBATCH -t 00:05:00
 
 module purge
-module load gcc-4.8.1
+module load gcc-5.2.0
 module load zlib-1.2.8
 export MPIDIR=OpenMPI
 export RDIR=R_directory
