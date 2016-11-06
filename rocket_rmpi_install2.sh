@@ -216,13 +216,13 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
 
 
 # Get pdbMPI https://cran.r-project.org/web/packages/pbdMPI/index.html
-wget https://cran.r-project.org/src/contrib/pbdMPI_0.3-1.tar.gz
+wget https://cran.r-project.org/src/contrib/pbdMPI_0.3-2.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
- -l $HOME/$RDIR/R300install/lib64/R/library pbdMPI_0.3-1.tar.gz
+ -l $HOME/$RDIR/R300install/lib64/R/library pbdMPI_0.3-2.tar.gz
 
     
 #get  https://cran.r-project.org/web/packages/rlecuyer/index.html
