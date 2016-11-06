@@ -373,11 +373,11 @@ $HOME/$PARALLELR/$RDIR/R300install/bin/R CMD INSTALL \
 -l $HOME/$PARALLELR/$RDIR/R300install/lib64/R/library data.table_1.9.6.tar.gz
 
 # Get PM cluster https://cran.r-project.org/web/packages/pmclust/index.html
-wget https://cran.r-project.org/src/contrib/pmclust_0.1-7.tar.gz
+wget https://cran.r-project.org/src/contrib/pmclust_0.1-8.tar.gz
 $HOME/$PARALLELR/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
--l $HOME/$PARALLELR/$RDIR/R300install/lib64/R/library pmclust_0.1-7.tar.gz 
+-l $HOME/$PARALLELR/$RDIR/R300install/lib64/R/library pmclust_0.1-8.tar.gz 
 
