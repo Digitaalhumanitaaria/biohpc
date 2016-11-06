@@ -14,7 +14,7 @@
 
 cd $HOME
 module purge
-module load gcc-4.8.1
+module load gcc-5.2.0
 module load zlib-1.2.8
 # Give installation directory a name
 export MPIDIR=OpenMPI
@@ -29,8 +29,8 @@ tar -xvf openmpi-1.10.2.tar.gz
 # Go into OpenMPI directory
 cd openmpi-1.10.2
 ./configure --prefix=$HOME/$MPIDIR/install --with-slurm \
-            FC=/storage/software/gcc-4.8.1/bin/gfortran \
-            CXX=/storage/software/gcc-4.8.1/bin/g++ \
+            FC=/storage/software/gcc-5.2.0/bin/gfortran \
+            CXX=/storage/software/gcc-5.2.0/bin/g++ \
             --disable-dlopen \
            CPPFLAGS="-I/storage/software/zlib-1.2.8/include"
 # Build library
@@ -357,11 +357,11 @@ $HOME/$RDIR/R300install/bin/R CMD INSTALL \
 -l $HOME/$RDIR/R300install/lib64/R/library data.table_1.9.6.tar.gz
 
 # Get PM cluster https://cran.r-project.org/web/packages/pmclust/index.html
-wget https://cran.r-project.org/src/contrib/pmclust_0.1-7.tar.gz
+wget https://cran.r-project.org/src/contrib/pmclust_0.1-8.tar.gz
 $HOME/$RDIR/R300install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
--l $HOME/$RDIR/R300install/lib64/R/library pmclust_0.1-7.tar.gz
+-l $HOME/$RDIR/R300install/lib64/R/library pmclust_0.1-8.tar.gz
 
