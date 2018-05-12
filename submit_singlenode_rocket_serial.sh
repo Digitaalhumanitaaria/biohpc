@@ -6,13 +6,12 @@
 
 module purge
 module load gcc-5.2.0
-module load zlib-1.2.8
-export MPIDIR=OpenMPI
+export MPIDIR=ROpenMPI31
 export RDIR=R_directory
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$RDIR/R300install/lib64/R/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$RDIR/extrasinstall/lib:$HOME/$RDIR/R350install/lib64/R/lib
 export MPIINCLUDE=$HOME/$MPIDIR/install/include
 export MPILIB=$HOME/$MPIDIR/install/lib
 export OMP_NUM_THREADS=1
 
-~/OpenMPI/install/bin/mpirun  ~/R_directory/R300install/bin/Rscript --vanilla  ./pca_demo.R
+~/ROpenMPI31/install/bin/mpirun  ~/R_directory/R350install/bin/Rscript --vanilla  ./pca_demo.R
 
