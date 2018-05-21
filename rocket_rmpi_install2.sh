@@ -421,6 +421,16 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
 -l $HOME/$RDIR/R350install/lib64/R/library coda_0.19-1.tar.gz
 
 
+# VGAM https://cran.r-project.org/web/packages/VGAM/index.html
+wget https://cran.r-project.org/src/contrib/VGAM_1.0-5.tar.gz
+$HOME/$RDIR/R350install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R350install/lib64/R/library VGAM_1.0-5.tar.gz
+
+
 # Cubfit demo https://cran.r-project.org/web/packages/cubfits/index.html
 wget https://cran.r-project.org/src/contrib/cubfits_0.1-3.tar.gz
 $HOME/$RDIR/R350install/bin/R CMD INSTALL \
