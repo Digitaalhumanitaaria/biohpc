@@ -412,6 +412,16 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R350install/lib64/R/library pmclust_0.2-0.tar.gz
 
+#Coda dependency for the cubfit https://cran.r-project.org/web/packages/coda/index.html
+wget https://cran.r-project.org/src/contrib/coda_0.19-1.tar.gz
+$HOME/$RDIR/R350install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R350install/lib64/R/library coda_0.19-1.tar.gz
+
+
 # Cubfit demo https://cran.r-project.org/web/packages/cubfits/index.html
 wget https://cran.r-project.org/src/contrib/cubfits_0.1-3.tar.gz
 $HOME/$RDIR/R350install/bin/R CMD INSTALL \
