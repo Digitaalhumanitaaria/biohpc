@@ -118,8 +118,7 @@ make install
 cd ..
 
 mkdir -p ~/R/x86_64-unknown-linux-gnu-library/3.5
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$RDIR/R350install/lib64/R/lib:$HOME/$RDIR/
-R350install/lib64/R/library
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$RDIR/R350install/lib64/R/lib:$HOME/$RDIR/R350install/lib64/R/library
 
 export MPIINCLUDE=$HOME/$MPIDIR/install/include
 export MPILIB=$HOME/$MPIDIR/install/lib
@@ -412,6 +411,35 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R350install/lib64/R/library pmclust_0.2-0.tar.gz
 
+#Coda dependency for the cubfit https://cran.r-project.org/web/packages/coda/index.html
+wget https://cran.r-project.org/src/contrib/coda_0.19-1.tar.gz
+$HOME/$RDIR/R350install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R350install/lib64/R/library coda_0.19-1.tar.gz
+
+
+# VGAM https://cran.r-project.org/web/packages/VGAM/index.html
+wget https://cran.r-project.org/src/contrib/VGAM_1.0-5.tar.gz
+$HOME/$RDIR/R350install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R350install/lib64/R/library VGAM_1.0-5.tar.gz
+
+
+# Cubfit demo https://cran.r-project.org/web/packages/cubfits/index.html
+wget https://cran.r-project.org/src/contrib/cubfits_0.1-3.tar.gz
+$HOME/$RDIR/R350install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R350install/lib64/R/library cubfits_0.1-3.tar.gz
+
 # Get pdbDEMO https://cran.r-project.org/web//packages/pbdDEMO/index.html 
 #wget https://github.com/wrathematics/pbdDEMO/archive/v0.2-0.tar.gz
 wget https://cran.r-project.org/src/contrib/pbdDEMO_0.3-1.tar.gz
@@ -421,3 +449,4 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R350install/lib64/R/library pbdDEMO_0.3-1.tar.gz 
+
