@@ -412,6 +412,15 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R350install/lib64/R/library pmclust_0.2-0.tar.gz
 
+# Cubfit demo https://cran.r-project.org/web/packages/cubfits/index.html
+wget https://cran.r-project.org/src/contrib/cubfits_0.1-3.tar.gz
+$HOME/$RDIR/R350install/bin/R CMD INSTALL \
+ --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
+ --configure-args="--with-mpi-include=$MPIINCLUDE \
+                   --with-mpi-libpath=$MPILIB \
+                   --with-mpi-type=OPENMPI" \
+-l $HOME/$RDIR/R350install/lib64/R/library cubfits_0.1-3.tar.gz
+
 # Get pdbDEMO https://cran.r-project.org/web//packages/pbdDEMO/index.html 
 #wget https://github.com/wrathematics/pbdDEMO/archive/v0.2-0.tar.gz
 wget https://cran.r-project.org/src/contrib/pbdDEMO_0.3-1.tar.gz
@@ -421,3 +430,4 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R350install/lib64/R/library pbdDEMO_0.3-1.tar.gz 
+
