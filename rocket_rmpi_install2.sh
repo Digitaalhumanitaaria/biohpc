@@ -118,8 +118,7 @@ make install
 cd ..
 
 mkdir -p ~/R/x86_64-unknown-linux-gnu-library/3.5
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$RDIR/R350install/lib64/R/lib:$HOME/$RDIR/
-R350install/lib64/R/library
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/$RDIR/R350install/lib64/R/lib:$HOME/$RDIR/R350install/lib64/R/library
 
 export MPIINCLUDE=$HOME/$MPIDIR/install/include
 export MPILIB=$HOME/$MPIDIR/install/lib
