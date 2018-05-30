@@ -316,7 +316,7 @@ tar -xvf hdf5-1.10.1.tar.gz
 cd hdf5-1.10.1
 export HDF5DIR=hdf5
 ./configure \
- --prefix=$HOME/$HDF5DIR/HDF5install/ \
+ --prefix=$HOME/$RDIR/$HDF5DIR/HDF5install/ \
            --enable-parallel \
            --enable-shared \
            CC=$HOME/$MPIDIR/install/bin/mpicc \
@@ -334,12 +334,12 @@ tar -xvf v4.6.1.tar.gz
 export NETCDF4DIR=netcdf4
 cd netcdf-c-4.6.1
 ./configure \
-      --prefix=$HOME/$NETCDF4DIR/netcdf4install/ \
+      --prefix=$HOME/$RDIR/$NETCDF4DIR/netcdf4install/ \
       --enable-netcdf4 \
       --enable-shared \
       CC="$HOME/$MPIDIR/install/bin/mpicc -g" \
-      CFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include" \
-      CPPFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include" \
+      CFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$RDIR/$HDF5DIR/HDF5install/include" \
+      CPPFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$RDIR/$HDF5DIR/HDF5install/include" \
       LDFLAGS="-L$MPILIB -L$HOME/$HDF5DIR/HDF5install/lib -lhdf5"
 make 
 make install
@@ -350,7 +350,7 @@ wget https://cran.r-project.org/src/contrib/pbdNCDF4_0.1-4.tar.gz
 tar -zxvf pbdNCDF4_0.1-4.tar.gz
 $HOME/$RDIR/R350install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \ 
- --configure-args="--with-nc-config=$HOME/$NETCDF4DIR/netcdf4install/bin \
+ --configure-args="--with-nc-config=$HOME/$RDIR/$NETCDF4DIR/netcdf4install/bin \
                    --enable-parallel \
                    --with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
