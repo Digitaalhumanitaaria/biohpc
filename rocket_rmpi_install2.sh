@@ -261,13 +261,13 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
 
 
 # Get pdbMPI https://cran.r-project.org/web/packages/pbdMPI/index.html
-wget https://cran.r-project.org/src/contrib/pbdMPI_0.3-5.tar.gz
+wget https://cran.r-project.org/src/contrib/pbdMPI_0.3-6.tar.gz
 $HOME/$RDIR/R350install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
- -l $HOME/$RDIR/R350install/lib64/R/library pbdMPI_0.3-5.tar.gz
+ -l $HOME/$RDIR/R350install/lib64/R/library pbdMPI_0.3-6.tar.gz
 
     
 #get  https://cran.r-project.org/web/packages/rlecuyer/index.html
@@ -315,14 +315,14 @@ wget www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.10.1.tar.gz
 tar -xvf hdf5-1.10.1.tar.gz
 cd hdf5-1.10.1
 export HDF5DIR=hdf5
-CC="$HOME/$MPIDIR/install/bin/mpicc" 
-CFLAGS="-fPIC -I$MPIINCLUDE" 
-CPPFLAGS="-fPIC -I$MPIINCLUDE" 
-LDFLAGS="-L$MPILIB"
 ./configure \
- --prefix=$HOME/$HDF5DIR/HDF5install/ \ 
+ --prefix=$HOME/$HDF5DIR/HDF5install/ \
            --enable-parallel \
-           --enable-shared 
+           --enable-shared \
+           CC=$HOME/$MPIDIR/install/bin/mpicc \
+           CFLAGS="-fPIC -I$MPIINCLUDE" \
+           CPPFLAGS="-fPIC -I$MPIINCLUDE" \
+           LDFLAGS="-L$MPILIB"
 make
 make install
 cd ..
@@ -333,17 +333,13 @@ wget https://github.com/Unidata/netcdf-c/archive/v4.6.1.tar.gz
 tar -xvf v4.6.1.tar.gz
 export NETCDF4DIR=netcdf4
 cd netcdf-c-4.6.1
-CC="$HOME/$MPIDIR/install/bin/mpicc -g"
-CFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include"
-CPPFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include" 
-LDFLAGS="-L$MPILIB -L$HOME/$HDF5DIR/HDF5install/lib -lhdf5"
 ./configure \
       --prefix=$HOME/$NETCDF4DIR/netcdf4install/ \
       --enable-netcdf4 \
       --enable-shared \
       CC="$HOME/$MPIDIR/install/bin/mpicc -g" \
       CFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include" \
-      CPPFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include" \ 
+      CPPFLAGS="-fPIC -I$MPIINCLUDE -I$HOME/$HDF5DIR/HDF5install/include" \
       LDFLAGS="-L$MPILIB -L$HOME/$HDF5DIR/HDF5install/lib -lhdf5"
 make 
 make install
@@ -360,27 +356,6 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
 -l $HOME/$RDIR/R350install/lib64/R/library pbdNCDF4 
-
-
-# Get and install pbdDEMO https://cran.r-project.org/web/packages/pbdDEMO/index.html
-wget https://cran.r-project.org/src/contrib/pbdDEMO_0.3-1.tar.gz
-$HOME/$RDIR/R350install/bin/R CMD INSTALL \
- --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
- --configure-args="--with-mpi-include=$MPIINCLUDE \
-                   --with-mpi-libpath=$MPILIB \
-                   --with-mpi-type=OPENMPI" \
--l $HOME/$RDIR/R350install/lib64/R/library pbdDEMO_0.3-1.tar.gz
- 
- 
-# Get pdbDEMO https://cran.r-project.org/web//packages/pbdDEMO/index.html 
-#wget https://github.com/wrathematics/pbdDEMO/archive/v0.2-0.tar.gz 
-#mv v0.2-0.tar.gz pbdDEMO_0.2-0.tar.gz
-#$HOME/$RDIR/R300install/bin/R CMD INSTALL \
-# --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
-# --configure-args="--with-mpi-include=$MPIINCLUDE \
-#                   --with-mpi-libpath=$MPILIB \
-#                   --with-mpi-type=OPENMPI" \
-#-l $HOME/$RDIR/R300install/lib64/R/library pbdDEMO_0.2-0.tar.gz 
  
  # Get chron which is needed for data.table https://cran.r-project.org/web/packages/chro
 n/index.html
@@ -394,13 +369,13 @@ $HOME/$RDIR/R350install/bin/R CMD INSTALL \
 
 
 # Get data.table https://cran.r-project.org/web/packages/data.table/index.html
-wget https://cran.r-project.org/src/contrib/data.table_1.11.2.tar.gz
+wget https://cran.r-project.org/src/contrib/data.table_1.11.4.tar.gz
 $HOME/$RDIR/R350install/bin/R CMD INSTALL \
  --configure-vars="CPPFLAGS=-I$MPIINCLUDE LDFLAGS=' -L$MPILIB'" \
  --configure-args="--with-mpi-include=$MPIINCLUDE \
                    --with-mpi-libpath=$MPILIB \
                    --with-mpi-type=OPENMPI" \
--l $HOME/$RDIR/R350install/lib64/R/library data.table_1.11.2.tar.gz
+-l $HOME/$RDIR/R350install/lib64/R/library data.table_1.11.4.tar.gz
 
 # Get PM cluster https://cran.r-project.org/web/packages/pmclust/index.html
 wget https://cran.r-project.org/src/contrib/pmclust_0.2-0.tar.gz
