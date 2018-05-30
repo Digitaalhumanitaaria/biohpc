@@ -3,5 +3,6 @@
 #SBATCH -N 1
 #SBATCH --mem 35000
 #SBATCH -t 05:05:00
+#SBATCH -p gpu
 
 bash rocket_rmpi_install2.sh
